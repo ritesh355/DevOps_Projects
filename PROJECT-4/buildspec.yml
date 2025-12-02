@@ -1,0 +1,18 @@
+version: 0.2
+phases:
+  install:
+    runtime-versions:
+      nodejs: 18
+    commands:
+      - npm install
+  build:
+    commands:
+      - echo Build completed
+      - rm -rf node_modules package-lock.json
+artifacts:
+  files:
+    - appspec.yml
+    - index.js
+    - package.json
+    - scripts/**/*
+  discard-paths: no

@@ -1,0 +1,18 @@
+version: 0.0
+os: linux
+files:
+  - source: /
+    destination: /home/ubuntu/my-app  # Changed from /home/ec2-user/my-app
+hooks:
+  AfterInstall:
+    - location: scripts/install_deps.sh
+      timeout: 300
+      runas: ubuntu  # Changed from ec2-user
+  ApplicationStart:
+    - location: scripts/start_app.sh
+      timeout: 300
+      runas: ubuntu  # Changed from ec2-user
+  ApplicationStop:
+    - location: scripts/stop_app.sh
+      timeout: 300
+      runas: ubuntu  # Changed from ec2-user
