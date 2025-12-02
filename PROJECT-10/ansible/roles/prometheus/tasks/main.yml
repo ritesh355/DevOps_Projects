@@ -1,0 +1,27 @@
+---
+- name: Install Docker
+  apt:
+    name: docker.io
+    state: present
+    update_cache: yes
+- name: Add ubuntu user to Docker group
+  user:
+    name: ubuntu
+    groups: docker
+    append: yes
+
+- name: Enable Docker
+  systemd:
+    name: docker
+    enabled: yes
+    state: started
+
+- name: Run Prometheus container
+  docker_container:
+    name: prometheus
+    image: prom/prometheus
+    state: started
+    restart_policy: always
+    published_ports:
+      - "9090:9090"
+

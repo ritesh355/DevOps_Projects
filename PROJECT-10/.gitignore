@@ -1,0 +1,126 @@
+# === Python (Flask App) ===
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.db
+*.sqlite3
+*.log
+instance/
+.env
+venv/
+env/
+.venv/
+
+# === Flask configuration files ===
+*.pid
+*.bak
+*.swp
+*.tmp
+*.py~
+*.log
+.DS_Store
+
+# === Node/npm (if frontend exists) ===
+node_modules/
+npm-debug.log
+yarn-debug.log
+yarn-error.log
+*.tgz
+
+# === Docker ===
+*.tar
+docker-compose.override.yml
+.dockerignore
+.env.docker
+.env.prod
+.env.dev
+
+# === Terraform ===
+*.tfstate
+*.tfstate.*
+crash.log
+*.tfvars
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+.terraform/
+.terraform.lock.hcl
+
+# === Ansible ===
+*.retry
+*.log
+*.ini~
+inventory/*.ini~
+inventory/*.bak
+inventory/*.old
+roles/*/files/*.pem
+roles/*/files/*.key
+roles/*/files/*.crt
+
+# === AWS keys & credentials ===
+*.pem
+*.key
+*.csr
+*.crt
+.aws/
+aws-credentials/
+credentials.json
+
+# === Jenkins ===
+workspace/
+*.war
+*.bak
+*.tmp
+secrets/
+secret.key
+config.xml
+plugins/
+updates/
+users/
+
+# === IDE/Editor Files ===
+.vscode/
+.idea/
+*.sublime-workspace
+*.sublime-project
+*.code-workspace
+
+# === OS / System ===
+Thumbs.db
+.DS_Store
+ehthumbs.db
+Icon?
+desktop.ini
+
+# === Logs / Temp ===
+*.log
+logs/
+tmp/
+temp/
+*.out
+
+# === Build & Artifacts ===
+dist/
+build/
+target/
+*.egg-info/
+*.eggs/
+.coverage
+.cache/
+pytest_cache/
+
+# === CI/CD ===
+.env.local
+.env.production
+.env.test
+coverage.xml
+junit.xml
+
+# === Misc ===
+*.bak
+*.swp
+*.tmp
+*.orig
+

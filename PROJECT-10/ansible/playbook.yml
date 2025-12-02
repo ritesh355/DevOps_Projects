@@ -1,0 +1,20 @@
+---
+- name: Configure Flask Server
+  hosts: flask_server
+  become: yes
+  roles:
+    - flask_app
+
+- name: Configure Jenkins Server
+  hosts: jenkins_server
+  become: yes
+  roles:
+    - jenkins_setup
+
+- name: prometheus and grafana
+  hosts: monitoring_server
+  become: yes
+  roles:
+    - prometheus
+    - grafana  
+

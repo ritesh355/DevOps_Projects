@@ -1,0 +1,50 @@
+---
+- name: Install dependencies
+  apt:
+    name: ['docker.io', 'unzip', 'curl']
+    state: present
+    update_cache: yes
+
+- name: Enable Docker
+  systemd:
+    name: docker
+    enabled: yes
+    state: started
+- name: Add ubuntu user to Docker group
+  user:
+    name: ubuntu
+    groups: docker
+    append: yes
+
+- name: Install AWS CLI v2
+  shell: |
+    curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+    unzip -o awscliv2.zip
+    sudo ./aws/install
+  args:
+    chdir: /tmp
+    creates: /usr/local/bin/aws
+
+- name: Log in to AWS ECR
+  shell: |
+    aws ecr get-login-password --region us-east-1 | \
+    docker login --username AWS --password-stdin 772954893641.dkr.ecr.us-east-1.amazonaws.com
+  environment:
+    AWS_ACCESS_KEY_ID: "{{ lookup('env','AWS_ACCESS_KEY_ID') }}"
+    AWS_SECRET_ACCESS_KEY: "{{ lookup('env','AWS_SECRET_ACCESS_KEY') }}"
+    AWS_DEFAULT_REGION: "us-east-1"
+
+- name: Pull Flask Docker image
+  docker_image:
+    name: 772954893641.dkr.ecr.us-east-1.amazonaws.com/flask-app:latest
+    source: pull
+
+- name: Run Flask container
+  docker_container:
+    name: flask_app
+    image: 772954893641.dkr.ecr.us-east-1.amazonaws.com/flask-app:latest
+    restart_policy: always
+    state: started
+    published_ports:
+      - "5000:5000"
+
