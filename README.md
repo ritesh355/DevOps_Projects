@@ -1,9 +1,10 @@
-# 🚀 DevOps Projects – Complete Portfolio
+# 🚀 DevOps Projects 
 
-Welcome to my DevOps Projects Portfolio, a curated collection of all the real-world DevOps, Cloud, CI/CD, Automation, and Infrastructure projects I have built.
-This repository is continuously updated as I learn new tools, build more systems, and explore advanced DevOps concepts.
+A curated collection of all my **end-to-end DevOps**, **Cloud**, **CI/CD**, **Automation**, and **Infrastructure projects**.
+This repository showcases my hands-on learning journey—from beginner concepts to advanced real-world implementations using **Docker**, **Jenkins**, **AWS**, **Terraform**, **Ansible**, **GitHub Actions**, **Serverless**, **Monitoring**, and more.
 
-Each project is stored in its own folder with documentation, source code, architecture diagrams, and deployment steps.
+Every project has its own folder, complete with documentation, code, and setup instructions.
+
 
 ### 📌 Repository Overview
 
@@ -103,6 +104,50 @@ A fully automated DevSecOps pipeline integrating IaC, security scanning, contain
 
 - **Tech**: Jenkins, Terraform, Ansible, Docker, Trivy, AWS
 - **Use Case:** Enterprise-grade DevSecOps workflow.
+
+
+## 🛠️ Tech Stack Covered So Far
+**CI/CD Tools**
+
+- GitHub Actions
+
+- Jenkins
+
+- AWS CodePipeline
+
+- CodeDeploy
+
+- CodeBuild
+
+**Containers & Orchestration**
+
+- Docker
+
+- Docker Compose
+
+- kubernetes  
+
+**Cloud Platforms**
+
+- AWS (EC2, S3, CloudFront, Lambda, IAM, Route53, DynamoDB, CloudWatch)
+
+**IaC & Configuration**
+
+- Terraform
+
+- Ansible
+
+**Security**
+
+- Trivy
+
+- IAM Best Practices
+
+**Monitoring**
+
+- Prometheus
+
+- Grafana
 
 ## 📌 🔜 Upcoming Projects
 
