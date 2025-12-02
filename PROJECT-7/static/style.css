@@ -1,0 +1,76 @@
+/* Body & container */
+body {
+    background-color: #f0f2f5;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+h2 {
+    font-weight: bold;
+}
+
+/* Table styling */
+.table thead {
+    background-color: #343a40;
+    color: white;
+}
+
+.table tbody tr:hover {
+    background-color: #e9ecef;
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+    background-color: #f8f9fa;
+}
+
+/* Buttons */
+.btn-custom {
+    margin-right: 5px;
+}
+
+.btn-success {
+    background-color: #198754;
+    border-color: #198754;
+}
+
+.btn-warning {
+    background-color: #ffc107;
+    border-color: #ffc107;
+    color: black;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+    border-color: #dc3545;
+}
+
+/* Badges */
+.badge-success {
+    background-color: #198754;
+}
+
+.badge-warning {
+    background-color: #ffc107;
+    color: black;
+}
+
+/* Modal customizations */
+.modal-header {
+    background-color: #343a40;
+    color: white;
+}
+
+.modal-footer .btn-success {
+    background-color: #198754;
+    border-color: #198754;
+}
+
+.modal-footer .btn-secondary {
+    background-color: #6c757d;
+    border-color: #6c757d;
+}
+
+/* Inputs & selects */
+.form-control, .form-select {
+    border-radius: 0.25rem;
+}
+
