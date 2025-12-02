@@ -1,0 +1,36 @@
+name: Flask CI/CD
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 📥 Checkout code
+        uses: actions/checkout@v4
+
+      - name: 🐍 Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: 📦 Install dependencies
+        run: |
+          pip install -r app/requirements.txt
+
+      - name: ✅ Run tests
+        run: echo "No tests yet"
+
+      - name: 🔐 Log in to Docker Hub
+        run: echo "${{ secrets.DOCKERHUB_TOKEN }}" | docker login -u "${{ secrets.DOCKERHUB_USERNAME }}" --password-stdin
+
+      - name: 🐳 Build Docker image
+        run: docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/flask-ci-cd-demo:latest .
+
+      - name: 📤 Push to Docker Hub
+        run: docker push ${{ secrets.DOCKERHUB_USERNAME }}/flask-ci-cd-demo:latest
+
