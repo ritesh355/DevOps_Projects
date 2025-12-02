@@ -1,0 +1,43 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  @apply bg-white dark:bg-gray-900 text-gray-900 dark:text-white;
+}
+@keyframes blob {
+  0%,
+  100% {
+    transform: translate(0px, 0px) scale(1);
+  }
+  33% {
+    transform: translate(30px, -50px) scale(1.1);
+  }
+  66% {
+    transform: translate(-20px, 20px) scale(0.9);
+  }
+}
+
+.animate-blob {
+  animation: blob 8s infinite;
+}
+.animation-delay-2000 {
+  animation-delay: 2s;
+}
+.animation-delay-4000 {
+  animation-delay: 4s;
+}
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 15px rgba(236, 72, 153, 0.6), 0 0 30px rgba(168, 85, 247, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 25px rgba(236, 72, 153, 0.8), 0 0 50px rgba(168, 85, 247, 0.6);
+  }
+}
+
+.hover\:animate-pulse-glow:hover {
+  animation: pulse-glow 1.8s infinite ease-in-out;
+}
+
+

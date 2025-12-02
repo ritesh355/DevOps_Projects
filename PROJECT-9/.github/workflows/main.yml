@@ -1,0 +1,68 @@
+name: Build, Push & Deploy Next.js
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    # 1️⃣ Checkout repo
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    # 2️⃣ Setup Node.js (needed if you use Dockerfile with npm install inside)
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18'
+
+    # 3️⃣ Log in to Docker Hub
+    - name: Log in to Docker Hub
+      uses: docker/login-action@v2
+      with:
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
+
+    # 4️⃣ Build Docker image with commit SHA + latest tag
+    - name: Build Docker image
+      run: |
+        docker build -t ritesh355/nextjs-portfolio:${{ github.sha }} \
+                     -t ritesh355/nextjs-portfolio:latest .
+
+    # 5️⃣ Push Docker images
+    - name: Push Docker image
+      run: |
+        docker push ritesh355/nextjs-portfolio:${{ github.sha }}
+        docker push ritesh355/nextjs-portfolio:latest
+          
+    # 6️⃣ Deploy to EC2 (Improved)
+    - name: Deploy to EC2
+      uses: appleboy/ssh-action@v0.1.9
+      with:
+        host: ${{ secrets.EC2_HOST }}
+        username: ${{ secrets.EC2_USER }}
+        key: ${{ secrets.EC2_SSH_KEY }}
+        script: |
+          echo "🔄 Cleaning up old containers and images..."
+          docker stop nextjs-portfolio || true
+          docker rm nextjs-portfolio || true
+          docker rmi ritesh355/nextjs-portfolio:latest || true
+
+          echo "✅ Pulling the latest image..."
+          docker pull ritesh355/nextjs-portfolio:latest
+
+          echo "🚀 Starting new container..."
+          docker run -d \
+            --name nextjs-portfolio \
+            -p 80:3000 \
+            --restart always \
+            ritesh355/nextjs-portfolio:latest
+
+          echo "🧾 Verifying deployment..."
+          docker ps
+          docker images | grep nextjs-portfolio
+
