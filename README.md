@@ -168,3 +168,12 @@ Nginx Load Balancer setups
 Multi-region disaster recovery
 
 More serverless projects
+
+## 🤝 Contributing
+
+This repository is part of my personal DevOps learning journey.
+Suggestions and improvements are always welcome.
+
+## ⭐ Support
+
+If you find this useful, consider giving the repo a star — it motivates me to build more real-world DevOps projects.
