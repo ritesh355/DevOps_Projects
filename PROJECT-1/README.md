@@ -52,7 +52,7 @@ cd weather-app
 Create a `.env` file in the project root:
 
 ```
-API_KEY=your_openweathermap_api_key_here
+WEATHER_API_KEY=your_openweathermap_api_key_here
 ```
 
 ### 4. 📦 Build & Run Containers
